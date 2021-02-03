@@ -58,6 +58,12 @@ app.get("/noticelist", require('./api/notice/noticelist'))
 // 点击查看公告
 app.post("/examine", require('./api/notice/examine'))
 
+//查看用户列表
+app.post('/userList',require('./adminapi/user/userList'))
+//查看用户详情
+app.get('/userDetail',require('./adminapi/user/userDetail'))
+//保存用户表修改或者添加
+app.post('/save',require('./adminapi/user/save'))
 
 
 

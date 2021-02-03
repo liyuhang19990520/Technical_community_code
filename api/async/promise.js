@@ -5,10 +5,22 @@ const COMMENT = require("../../model/COMMENT")
 const COLLECT = require("../../model/COLLECT")
 const NOTICE = require("../../model/NOTICE")
 module.exports = {
-  //用户表查找promise
-  usernameFind: function (obj) {
+  //用户id查找promise
+  userIdFind: function (obj) {
     return new Promise((resolve, reject) => {
-      USER.find(obj, (err, result) => {
+      USER.findById(obj, (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject('没有该用户')
+        }
+      })
+    })
+  },
+  //用户表查找promise
+  usernameFind: function (obj, newObj = {}) {
+    return new Promise((resolve, reject) => {
+      USER.find(obj, null, newObj, (err, result) => {
         if (!err) {
           resolve(result)
         } else {
