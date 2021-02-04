@@ -53,6 +53,30 @@ module.exports = {
       })
     })
   },
+  //用户表删除信息
+  userDel: function (obj) {
+    return new Promise((resolve, reject) => {
+      USER.remove(obj, (err) => {
+        if (!err) {
+          resolve('删除成功')
+        } else {
+          reject('删除失败')
+        }
+      })
+    })
+  },
+  //删除帖子表内容
+  postDel: function (obj) {
+    return new Promise((resolve, reject) => {
+      POST.remove(obj, (err) => {
+        if (!err) {
+          resolve('删除成功')
+        } else {
+          reject('删除失败')
+        }
+      })
+    })
+  },
   //添加帖子表内容
   postAdd: function (obj) {
     return new Promise((resolve, reject) => {
@@ -157,6 +181,18 @@ module.exports = {
           resolve(result)
         } else {
           reject('没有该评论')
+        }
+      })
+    })
+  },
+  //删除评论
+  commentDel: function (obj) {
+    return new Promise((resolve, reject) => {
+      COMMENT.remove(obj, (err) => {
+        if (!err) {
+          resolve('删除成功')
+        } else {
+          reject('删除失败')
         }
       })
     })

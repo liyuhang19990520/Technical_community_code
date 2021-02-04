@@ -59,14 +59,22 @@ app.get("/noticelist", require('./api/notice/noticelist'))
 app.post("/examine", require('./api/notice/examine'))
 
 //查看用户列表
-app.post('/userList',require('./adminapi/user/userList'))
+app.post('/userList', require('./adminapi/user/userList'))
 //查看用户详情
-app.get('/userDetail',require('./adminapi/user/userDetail'))
+app.get('/userDetail', require('./adminapi/user/userDetail'))
 //保存用户表修改或者添加
-app.post('/save',require('./adminapi/user/save'))
+app.post('/userSave', require('./adminapi/user/userSave'))
+//删除用户以及他所有的帖子以及评论
+app.get('/userDel', require('./adminapi/user/userDel'))
+//查看公告列表
+app.post('/noticesList', require('./adminapi/notices/noticesList'))
+//查看公告详情
+app.get('/noticesDetail', require('./adminapi/notices/noticesDetail'))
+//保存用户表修改或者添加
+app.post('/noticesSave', require('./adminapi/notices/noticesSave'))
 
 
 
-app.listen(3000,() => {
+app.listen(3000, () => {
   console.log("开启成功")
 })

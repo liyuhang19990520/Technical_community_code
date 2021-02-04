@@ -1,13 +1,22 @@
-var { collectAdd, collectUserFind, collectRemove } = require('../async/promise')
+var { collectAdd, collectUserFind, collectRemove, postIdFind, skillIdFind } = require('../async/promise')
 
 async function main(req) {
   //分两种情况，技术博客和社区帖子，一个有index一个没有
+  var postUser;
   if (req.query.type == 'skill') {
+    var postIdData = await skillIdFind(req.query.id)
+    postIdData.content.forEach(element => {
+      if (element.id == req.query.sonid) {
+        postUser = element.postUser
+      }
+    });
+
     var obj = {
       postId: req.query.id,
       sonid: req.query.sonid,
       type: req.query.type,
-      username: req.query.username
+      username: req.query.username,
+      postUser
     }
     var newObj = {
       postId: req.query.id,
@@ -15,10 +24,13 @@ async function main(req) {
       type: req.query.type
     }
   } else {
+    var postIdData = await postIdFind(req.query.id)
+    postUser = postIdData.postUser
     var obj = {
       postId: req.query.id,
       type: req.query.type,
-      username: req.query.username
+      username: req.query.username,
+      postUser
     }
     var newObj = {
       postId: req.query.id,
@@ -59,7 +71,7 @@ async function main(req) {
         arr: data,
         boo: false
       }
-    }else{
+    } else {
       return {
         code: 2,
         arr: data,
