@@ -1,4 +1,4 @@
-var { noticeUpdata, noticeAdd, noticeFind } = require('../../api/async/promise')
+var { noticeUpdata, noticeAdd } = require('../../api/async/promise')
 module.exports = async function (req) {
   if (req.body._id) {
     await noticeUpdata({ _id: req.body._id }, req.body)

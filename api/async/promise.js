@@ -4,7 +4,68 @@ const SKILLPOST = require('../../model/SKILLPOST')
 const COMMENT = require("../../model/COMMENT")
 const COLLECT = require("../../model/COLLECT")
 const NOTICE = require("../../model/NOTICE")
+const ADMIN = require("../../model/ADMIN")
 module.exports = {
+  //管理员id查找promise
+  adminIdFind: function (obj) {
+    return new Promise((resolve, reject) => {
+      ADMIN.findById(obj, (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject('没有该用户')
+        }
+      })
+    })
+  },
+  //管理员查找promise
+  adminNameFind: function (obj, newObj = {}) {
+    return new Promise((resolve, reject) => {
+      ADMIN.find(obj, null, newObj, (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject('没有该用户')
+        }
+      })
+    })
+  },
+  //管理员添加promise
+  adminAdd: function (obj) {
+    return new Promise((resolve, reject) => {
+      ADMIN.create(obj, (err) => {
+        if (!err) {
+          resolve('注册成功')
+        } else {
+          reject('注册失败')
+        }
+      })
+    })
+  },
+  //管理员修改信息
+  adminUpdata: function (obj, newObj) {
+    return new Promise((resolve, reject) => {
+      ADMIN.update(obj, newObj, (err) => {
+        if (!err) {
+          resolve('修改成功')
+        } else {
+          reject('没有该用户')
+        }
+      })
+    })
+  },
+  //管理员删除信息
+  adminDel: function (obj) {
+    return new Promise((resolve, reject) => {
+      ADMIN.remove(obj, (err) => {
+        if (!err) {
+          resolve('删除成功')
+        } else {
+          reject('删除失败')
+        }
+      })
+    })
+  },
   //用户id查找promise
   userIdFind: function (obj) {
     return new Promise((resolve, reject) => {
@@ -90,9 +151,9 @@ module.exports = {
     })
   },
   //帖子其他信息查找
-  postUserFind: function (obj) {
+  postUserFind: function (obj, newobj = {}) {
     return new Promise((resolve, reject) => {
-      POST.find(obj, (err, result) => {
+      POST.find(obj, null, newobj, (err, result) => {
         if (!err) {
           resolve(result)
         } else {
@@ -174,9 +235,9 @@ module.exports = {
     })
   },
   //查找评论
-  commentUserFind: function (obj) {
+  commentUserFind: function (obj, newobj = {}) {
     return new Promise((resolve, reject) => {
-      COMMENT.find(obj, (err, result) => {
+      COMMENT.find(obj, null, newobj, (err, result) => {
         if (!err) {
           resolve(result)
         } else {
@@ -193,6 +254,18 @@ module.exports = {
           resolve('删除成功')
         } else {
           reject('删除失败')
+        }
+      })
+    })
+  },
+  //id查找评论
+  commentIdFind: function (obj) {
+    return new Promise((resolve, reject) => {
+      COMMENT.findById(obj, (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject('没有此评论')
         }
       })
     })
@@ -282,9 +355,9 @@ module.exports = {
     })
   },
   //其他条件查找公告
-  noticeFind: function (obj) {
+  noticeFind: function (obj, newobj = {}) {
     return new Promise((resolve, reject) => {
-      NOTICE.find(obj, (err, result) => {
+      NOTICE.find(obj, null, newobj, (err, result) => {
         if (!err) {
           resolve(result)
         } else {

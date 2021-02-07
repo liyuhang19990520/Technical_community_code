@@ -66,12 +66,39 @@ app.get('/userDetail', require('./adminapi/user/userDetail'))
 app.post('/userSave', require('./adminapi/user/userSave'))
 //删除用户以及他所有的帖子以及评论
 app.get('/userDel', require('./adminapi/user/userDel'))
+
+
 //查看公告列表
 app.post('/noticesList', require('./adminapi/notices/noticesList'))
 //查看公告详情
 app.get('/noticesDetail', require('./adminapi/notices/noticesDetail'))
-//保存用户表修改或者添加
+//保存公告表修改或者添加
 app.post('/noticesSave', require('./adminapi/notices/noticesSave'))
+//删除公告
+app.get('/niticesDel', require('./adminapi/notices/niticesDel'))
+
+
+//查看评论列表
+app.post('/commentList', require('./adminapi/comment/commentList'))
+//查看评论详情
+app.get('/commentDetail', require('./adminapi/comment/commentDetail'))
+//删除评论
+app.get('/commentDel', require('./adminapi/comment/commentDel'))
+
+
+//查看公告列表
+app.post('/postsList', require('./adminapi/posts/postsList'))
+// 查看社区贴详情
+app.get('/postsDetail', require('./adminapi/posts/postsDetail'))
+//删除社区贴
+app.get('/postsDel', require('./adminapi/posts/postsDel'))
+
+
+//个人中心查看信息
+app.post('/adminList', require('./adminapi/admin/adminList'))
+//个人中心查看信息
+app.post('/adminUpdata', require('./adminapi/admin/adminUpdata'))
+
 
 
 
