@@ -96,8 +96,11 @@ app.get('/postsDel', require('./adminapi/posts/postsDel'))
 
 //个人中心查看信息
 app.post('/adminList', require('./adminapi/admin/adminList'))
-//个人中心查看信息
+//个人中心修改信息
 app.post('/adminUpdata', require('./adminapi/admin/adminUpdata'))
+
+//管理员登陆
+app.post("/adminlogin", require('./adminapi/login/adminlogin'))
 
 
 
