@@ -99,6 +99,17 @@ app.post('/adminList', require('./adminapi/admin/adminList'))
 //个人中心修改信息
 app.post('/adminUpdata', require('./adminapi/admin/adminUpdata'))
 
+
+//查看技术贴列表
+app.post('/SkillPostsList', require('./adminapi/skillposts/skillPostsList'))
+// 查看技术贴详情
+app.get('/skillPostsDetail', require('./adminapi/skillposts/skillPostsDetail'))
+// 技术贴提交表单
+app.post('/skillPostsSave', require('./adminapi/skillposts/skillPostsSave'))
+//删除社区贴
+app.get('/skillPostsDel', require('./adminapi/skillposts/skillPostsDel'))
+
+
 //管理员登陆
 app.post("/adminlogin", require('./adminapi/login/adminlogin'))
 

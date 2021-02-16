@@ -3,6 +3,7 @@ async function main() {
   // const Arr = []
   var arr = [];
   const skillAllData = await skillUserFind({})
+  console.log(skillAllData)
   for (let i = 0; i < skillAllData.length; i++) {
     var newArr = [];
     for (let j = 0; j < skillAllData[i].content.length; j++) {
